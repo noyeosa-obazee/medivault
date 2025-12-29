@@ -37,8 +37,10 @@ export default function MedicineItem({ med }) {
   const takenTodayCount = getDoseCountForDay(new Date());
 
   const getGoal = () => {
+    if (med.frequency === "Once Daily") return 1;
     if (med.frequency === "Twice Daily") return 2;
-    if (med.frequency === "Daily") return 1;
+    if (med.frequency === "Thrice Daily") return 3;
+    if (med.frequency === "Four Daily") return 4;
     return 1;
   };
   const goal = getGoal();
@@ -204,9 +206,9 @@ export default function MedicineItem({ med }) {
 
       <div className={styles.actionBar}>
         <div className={styles.progressArea}>
-          {med.frequency === "Twice Daily" && (
+          {med.frequency !== "PRN" && (
             <span className={styles.progressLabel}>
-              Today: {takenTodayCount}/2
+              Today: {takenTodayCount}/{getGoal()}
             </span>
           )}
         </div>

@@ -82,6 +82,8 @@ export default function Cabinet() {
           >
             <option value="Daily">Once Daily</option>
             <option value="Twice Daily">Twice Daily</option>
+            <option value="Thrice Daily">Thrice Daily</option>
+            <option value="Four Daily">Four times Daily</option>
             <option value="PRN">As Needed</option>
           </select>
         </div>
