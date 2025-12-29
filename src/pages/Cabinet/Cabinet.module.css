@@ -1,0 +1,309 @@
+.card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+}
+
+.formGroup {
+  margin-bottom: 1rem;
+}
+
+.label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.input,
+.select {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.button {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 0.8rem;
+  width: 100%;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.button:hover {
+  background-color: #1d4ed8;
+}
+
+/* .drugItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.deleteBtn {
+  background: none;
+  border: none;
+  color: red;
+  cursor: pointer;
+} */
+
+.select {
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  cursor: pointer;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23333%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 0.65em auto;
+}
+
+.select:focus,
+.input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.drugItem {
+  background: white;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  margin-bottom: 1rem;
+  border: 1px solid #f0f0f0;
+  transition: all 0.2s ease;
+}
+
+.completeBg {
+  background-color: #f0fdf4;
+  border-color: #bbf7d0;
+}
+
+.mainRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding-bottom: 0.8rem;
+}
+
+.infoGroup {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.iconCircle {
+  width: 40px;
+  height: 40px;
+  background-color: #eff6ff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconBlue {
+  color: #2563eb;
+}
+.iconGreen {
+  color: #16a34a;
+}
+
+.drugName {
+  margin: 0;
+  font-size: 1rem;
+  color: #1f2937;
+}
+
+.subText {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.badge {
+  font-size: 0.7rem;
+  background: #dcfce7;
+  color: #166534;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 8px;
+}
+
+.actionBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0.5rem;
+  border-top: 1px solid #f3f4f6;
+}
+
+.buttonsRight {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.takeBtn {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.takeBtn:hover {
+  background-color: #1d4ed8;
+}
+
+.iconBtn {
+  background: none;
+  border: none;
+  padding: 6px;
+  cursor: pointer;
+  color: #9ca3af;
+  border-radius: 50%;
+}
+.iconBtn:hover {
+  background-color: #f3f4f6;
+  color: #4b5563;
+}
+
+.editForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.row {
+  display: flex;
+  gap: 10px;
+}
+.editLabel {
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: #666;
+  margin-bottom: 4px;
+  display: block;
+}
+.editActions {
+  display: flex;
+  gap: 10px;
+  margin-top: 5px;
+}
+.saveBtn,
+.cancelBtn {
+  flex: 1;
+  padding: 8px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 0.9rem;
+}
+.saveBtn {
+  background: #2563eb;
+  color: white;
+}
+.cancelBtn {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.historySection {
+  margin-top: 10px;
+  animation: slideDown 0.3s ease;
+}
+.historyHeader {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: #6b7280;
+  margin-bottom: 10px;
+}
+.reportBox {
+  background: #f8fafc;
+  padding: 10px;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 0.85rem;
+  margin-top: 12px;
+  border: 1px solid #e2e8f0;
+}
+.hintText {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+}
+
+.dotsContainer {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 5px;
+}
+.historyDotGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  gap: 4px;
+}
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid white;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+.dotGreen {
+  background-color: #22c55e;
+}
+.dotRed {
+  background-color: #ef4444;
+}
+.dotGray {
+  background-color: #e5e7eb;
+}
+.dotPlaceholder {
+  width: 12px;
+  height: 12px;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

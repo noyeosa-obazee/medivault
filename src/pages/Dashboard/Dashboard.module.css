@@ -1,0 +1,11 @@
+.welcome {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+.emptyState {
+  text-align: center;
+  padding: 2rem;
+  background: white;
+  border-radius: 8px;
+  color: #666;
+}
