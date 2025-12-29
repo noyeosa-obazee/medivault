@@ -65,7 +65,7 @@ export default function Cabinet() {
             name="dosage"
             value={formData.dosage}
             onChange={handleChange}
-            placeholder="e.g. 500mg"
+            placeholder="e.g. 500mg or 2 Tablets"
           />
         </div>
 
@@ -83,7 +83,7 @@ export default function Cabinet() {
             <option value="Daily">Once Daily</option>
             <option value="Twice Daily">Twice Daily</option>
             <option value="Thrice Daily">Thrice Daily</option>
-            <option value="Four Daily">Four times Daily</option>
+
             <option value="PRN">As Needed</option>
           </select>
         </div>

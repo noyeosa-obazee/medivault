@@ -40,7 +40,7 @@ export default function MedicineItem({ med }) {
     if (med.frequency === "Once Daily") return 1;
     if (med.frequency === "Twice Daily") return 2;
     if (med.frequency === "Thrice Daily") return 3;
-    if (med.frequency === "Four Daily") return 4;
+
     return 1;
   };
   const goal = getGoal();
