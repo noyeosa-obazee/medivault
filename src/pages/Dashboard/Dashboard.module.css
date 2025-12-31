@@ -9,3 +9,80 @@
   border-radius: 8px;
   color: #666;
 }
+
+.container {
+  padding-bottom: 2rem;
+}
+
+/* --- HERO CARD (The Blue Box) --- */
+.heroCard {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  color: white;
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+  margin-bottom: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.greeting {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  margin-bottom: 0.2rem;
+}
+
+.mainStatus {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin: 0;
+  margin-bottom: 1rem;
+}
+
+/* --- Progress Bar --- */
+.progressContainer {
+  background: rgba(255, 255, 255, 0.2);
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.progressBar {
+  background: #ffffff; /* White bar on blue background */
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.5s ease-out;
+}
+
+.progressText {
+  font-size: 0.85rem;
+  text-align: right;
+  opacity: 0.9;
+}
+
+/* --- Section Headers --- */
+.sectionTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 3rem 1rem;
+  background: white;
+  border-radius: 12px;
+  border: 1px dashed #d1d5db;
+  color: #6b7280;
+}
+
+.link {
+  color: #2563eb;
+  font-weight: 600;
+  cursor: pointer;
+}
