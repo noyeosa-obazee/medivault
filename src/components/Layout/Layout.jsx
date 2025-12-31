@@ -1,11 +1,14 @@
 import { Outlet, NavLink } from "react-router-dom";
 import styles from "./Layout.module.css";
+import { Stethoscope } from "lucide-react";
 
 const Layout = () => {
   return (
     <div className={styles.container}>
       <header className={styles.header}>
-        <h2>MediVault 🛡️</h2>
+        <h2>
+          MediVault <Stethoscope size={24} />
+        </h2>
       </header>
 
       <main className={styles.main}>

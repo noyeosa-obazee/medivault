@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { useMed } from "../../context/MedContext";
-import { PlusCircle } from "lucide-react";
+import { PlusCircle, Loader2, AlertTriangle } from "lucide-react";
 import MedicineItem from "./MedicineItem";
 import styles from "./Cabinet.module.css";
 import toast from "react-hot-toast";
+import { checkSafety } from "../../utils/interactionEngine";
 
 export default function Cabinet() {
   const { state, dispatch, generateId } = useMed();
-
+  const [isChecking, setIsChecking] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     dosage: "",
@@ -19,20 +20,119 @@ export default function Cabinet() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const showWarningToast = (drugName, warningMessage, onConfirm) => {
+    toast(
+      (t) => (
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "10px",
+            maxWidth: "300px",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+              color: "#b91c1c",
+              fontWeight: "bold",
+            }}
+          >
+            <AlertTriangle size={20} />
+            <span>Interaction Alert!</span>
+          </div>
+
+          <div
+            style={{ fontSize: "0.9rem", color: "#374151", lineHeight: "1.4" }}
+          >
+            Adding <strong>{drugName}</strong> caused a conflict:
+            <div
+              style={{
+                marginTop: "5px",
+                padding: "8px",
+                background: "#fff",
+                borderRadius: "4px",
+                border: "1px solid #fee2e2",
+                fontSize: "0.8rem",
+                color: "#7f1d1d",
+              }}
+            >
+              "{warningMessage}"
+            </div>
+          </div>
+
+          <div style={{ display: "flex", gap: "8px", marginTop: "5px" }}>
+            <button
+              onClick={() => toast.dismiss(t.id)}
+              style={{
+                flex: 1,
+                padding: "8px",
+                border: "1px solid #d1d5db",
+                background: "white",
+                borderRadius: "4px",
+                cursor: "pointer",
+              }}
+            >
+              Cancel
+            </button>
+            <button
+              onClick={() => {
+                onConfirm();
+                toast.dismiss(t.id);
+              }}
+              style={{
+                flex: 1,
+                padding: "8px",
+                background: "#ef4444",
+                color: "white",
+                border: "none",
+                borderRadius: "4px",
+                cursor: "pointer",
+                fontWeight: "bold",
+              }}
+            >
+              Add Anyway
+            </button>
+          </div>
+        </div>
+      ),
+      { duration: Infinity, position: "top-center" }
+    );
+  };
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.name || !formData.dosage) {
-      toast.error("Please fill in all fields!");
+      toast.error("Please fill in all fields");
       return;
     }
+
     const newDrug = {
       id: generateId(),
       ...formData,
       dateAdded: new Date().toISOString(),
     };
-    dispatch({ type: "ADD_MED", payload: newDrug });
-    toast.success("Medicine added to Cabinet! 💊");
-    setFormData({ name: "", dosage: "", frequency: "Daily" });
+
+    setIsChecking(true);
+    const result = await checkSafety(formData.name, state.meds);
+    setIsChecking(false);
+
+    if (result.safe) {
+      dispatch({ type: "ADD_MED", payload: newDrug });
+      toast.success(
+        result.unknown
+          ? "Added (Safety Check Unavailable)"
+          : "Medicine Added (Safe) ✅"
+      );
+      setFormData({ name: "", dosage: "", frequency: "Daily" });
+    } else {
+      showWarningToast(formData.name, result.warning, () => {
+        dispatch({ type: "ADD_MED", payload: newDrug });
+        toast.success("Added despite warning ⚠️");
+        setFormData({ name: "", dosage: "", frequency: "Daily" });
+      });
+    }
   };
 
   return (
@@ -89,8 +189,23 @@ export default function Cabinet() {
         </div>
 
         <button type="submit" className={styles.button}>
-          {/* <PlusCircle size={20} style={{ marginRight: "8px" }} /> */}
-          Add to Cabinet
+          {isChecking ? (
+            <>
+              <Loader2
+                size={20}
+                className={styles.spin}
+                style={{
+                  marginRight: "8px",
+                }}
+              />
+              Checking Safety...
+            </>
+          ) : (
+            <>
+              <PlusCircle size={20} style={{ marginRight: "8px" }} />
+              Add to Cabinet
+            </>
+          )}
         </button>
       </form>
 
