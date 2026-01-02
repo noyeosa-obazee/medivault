@@ -108,7 +108,9 @@ export default function MedicineItem({ med }) {
 
   const showReport = (date, count, isGoalMet) => {
     const dateStr = format(date, "EEE, MMM do");
-    let status = isGoalMet ? "Completed ✅" : "Missed ❌";
+    let status = isGoalMet
+      ? "Completed ✅"
+      : `Missed ${goal - count} ${goal - count > 1 ? "doses" : "dose"} ❌`;
     if (med.frequency === "PRN") status = count > 0 ? "Taken" : "Not taken";
     setSelectedDayReport(`${dateStr}: ${count}/${goal} doses. ${status}`);
   };
