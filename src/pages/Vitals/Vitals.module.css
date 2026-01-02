@@ -1,4 +1,221 @@
 .container {
+  padding-bottom: 4rem;
+}
+
+.pageTitle {
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  color: #1f2937;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  align-items: start;
+}
+
+.card {
+  background: white;
   padding: 1rem;
-  text-align: center;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  min-height: 160px;
+  height: auto;
+  transition: all 0.2s ease-in-out;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+
+.iconBox {
+  padding: 8px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardLabel {
+  font-weight: 600;
+  color: #374151;
+  font-size: 0.9rem;
+}
+
+.displayArea {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.bigValue {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #111;
+}
+
+.unit {
+  font-size: 0.8rem;
+  color: #666;
+  font-weight: normal;
+}
+
+.dateLabel {
+  font-size: 0.7rem;
+  color: #9ca3af;
+  margin-top: 2px;
+}
+
+.emptyText {
+  color: #9ca3af;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.addBtn {
+  background: #f3f4f6;
+  border: none;
+  padding: 6px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  color: #4b5563;
+  font-size: 0.8rem;
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: auto;
+}
+.addBtn:hover {
+  background: #e5e7eb;
+}
+
+.miniForm {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-grow: 1;
+}
+
+.input {
+  width: 100%;
+  padding: 6px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.formActions {
+  display: flex;
+  gap: 6px;
+  margin-top: auto;
+}
+
+.saveBtn,
+.cancelBtn {
+  flex: 1;
+  border: none;
+  padding: 6px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+.saveBtn {
+  background: #2563eb;
+  color: white;
+}
+.cancelBtn {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.historySection {
+  margin-top: 1rem;
+  animation: fadeIn 0.3s ease;
+}
+
+.historyTitle {
+  font-size: 0.8rem;
+  color: #6b7280;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.historyList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.historyItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  background: #f9fafb;
+  border-radius: 6px;
+  border: 1px solid #f3f4f6;
+}
+
+.historyValue {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #374151;
+}
+
+.historyDate {
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+.contextBadge {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.7rem;
+  background-color: #eff6ff;
+  color: #2563eb;
+  padding: 4px 8px;
+  border-radius: 12px;
+  border: 1px solid #dbeafe;
+  max-width: 120px;
+}
+
+.contextBadge span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.divider {
+  height: 1px;
+  background: #eee;
+  margin: 10px 0;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
 }
