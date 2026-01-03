@@ -6,7 +6,7 @@ const initialState = () => {
   const saved = localStorage.getItem("medivault_data");
   return saved
     ? JSON.parse(saved)
-    : { meds: [], logs: [], user: { name: "Chinedu" }, vitals: [] };
+    : { meds: [], logs: [], user: { name: "Vaulter" }, vitals: [] };
 };
 
 const medReducer = (state, action) => {
