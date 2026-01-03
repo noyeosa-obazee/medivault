@@ -54,7 +54,8 @@ export default function Dashboard() {
     <div className={styles.container}>
       <div className={styles.heroCard}>
         <div className={styles.greeting}>
-          {getGreeting()}, {state.user.name} 👋
+          {getGreeting()} 👋
+          {/* Remember to eventually add after getGreeting() state.user.name */}
         </div>
         <h2 className={styles.mainStatus}>{getStatusMessage()}</h2>
 

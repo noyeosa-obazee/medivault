@@ -54,7 +54,7 @@ export default function VitalCard({ typeConfig }) {
     toast.success("Saved!");
     setInputValue("");
     setIsEntering(false);
-    setIsExpanded(true);
+    // setIsExpanded(true);
   };
 
   const canToggle = !isEntering && history.length > 0;
