@@ -3,10 +3,18 @@ import { createContext, useContext, useReducer, useEffect } from "react";
 const MedContext = createContext();
 
 const initialState = () => {
-  const saved = localStorage.getItem("medivault_data");
-  return saved
-    ? JSON.parse(saved)
-    : { meds: [], logs: [], user: { name: "Chinedu" } };
+  const savedSession = localStorage.getItem("medivault_session");
+  const sessionUser = savedSession ? JSON.parse(savedSession) : null;
+
+  const savedData = localStorage.getItem("medivault_data");
+  const parsedData = savedData ? JSON.parse(savedData) : {};
+
+  return {
+    meds: parsedData.meds || [],
+    logs: parsedData.logs || [],
+    vitals: parsedData.vitals || [],
+    user: sessionUser,
+  };
 };
 
 const medReducer = (state, action) => {
@@ -31,6 +39,65 @@ const medReducer = (state, action) => {
 
     case "LOG_DOSE":
       return { ...state, logs: [...state.logs, action.payload] };
+
+    case "LOGIN": {
+      const allUsers = JSON.parse(
+        localStorage.getItem("medivault_users") || "[]"
+      );
+
+      const foundUser = allUsers.find(
+        (u) =>
+          u.name.toLowerCase() === action.payload.name.toLowerCase() &&
+          u.password === action.payload.password
+      );
+
+      if (foundUser) {
+        const userProfile = { ...foundUser };
+
+        delete userProfile.password;
+        localStorage.setItem("medivault_session", JSON.stringify(userProfile));
+        return { ...state, user: userProfile };
+      } else {
+        throw new Error("Invalid credentials");
+      }
+    }
+
+    case "REGISTER": {
+      const existingUsers = JSON.parse(
+        localStorage.getItem("medivault_users") || "[]"
+      );
+
+      if (
+        existingUsers.find(
+          (u) => u.name.toLowerCase() === action.payload.name.toLowerCase()
+        )
+      ) {
+        throw new Error("User already exists");
+      }
+
+      const newUser = {
+        id: Date.now().toString(),
+        name: action.payload.name,
+        password: action.payload.password,
+        createdAt: new Date().toISOString(),
+      };
+
+      localStorage.setItem(
+        "medivault_users",
+        JSON.stringify([...existingUsers, newUser])
+      );
+
+      const safeProfile = { ...newUser };
+
+      delete safeProfile.password;
+      localStorage.setItem("medivault_session", JSON.stringify(safeProfile));
+
+      return { ...state, user: safeProfile };
+    }
+
+    case "LOGOUT":
+      localStorage.removeItem("medivault_session");
+      return { ...state, user: null };
 
     default:
       return state;
