@@ -46,20 +46,6 @@
   background-color: #1d4ed8;
 }
 
-/* .drugItem {
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem;
-  border-bottom: 1px solid #eee;
-}
-
-.deleteBtn {
-  background: none;
-  border: none;
-  color: red;
-  cursor: pointer;
-} */
-
 .select {
   width: 100%;
   padding: 0.8rem;
@@ -321,5 +307,11 @@ spin {
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 400px) {
+  .card {
+    padding: 0.5rem;
   }
 }
